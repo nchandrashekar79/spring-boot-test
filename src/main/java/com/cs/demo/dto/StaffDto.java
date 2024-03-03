@@ -1,10 +1,14 @@
 package com.cs.demo.dto;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
+@Table(name = "actor")
+@Entity
 public class StaffDto {
 
 	@Id
@@ -16,3 +20,4 @@ public class StaffDto {
 	@Column(name = "last_update", nullable = false)
 	String lastUpdated;
 }
+
