@@ -1,5 +1,6 @@
 package com.cs.demo.dto;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -37,9 +38,8 @@ public class CustomerDto {
 	@Column(name = "activebool", nullable = false)
 	boolean activebool;
 
-	/*
-	 * @Column(name = "create_date") Timestamp createDate;
-	 */
+	@Column(name = "create_date")
+	Date createDate;
 
 	@Column(name = "last_update", nullable = false)
 	Timestamp lastUpdated;
@@ -118,6 +118,15 @@ public class CustomerDto {
 	public void setActive(Integer active) {
 		this.active = active;
 	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 	
 	
+
 }

@@ -100,7 +100,7 @@ public class TestController {
 	}
 	
 	
-	@GetMapping("/film")
+	@GetMapping("film")
 	public List<FilmDto> filmFindAll() {
 		return filmRepo.findAll();
 	} 

@@ -3,10 +3,8 @@ package com.cs.demo.dto;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Table(name = "film_actor")

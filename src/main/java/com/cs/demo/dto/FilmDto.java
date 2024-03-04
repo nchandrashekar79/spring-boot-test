@@ -1,5 +1,7 @@
 package com.cs.demo.dto;
 
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -26,7 +28,7 @@ public class FilmDto {
 	String description;
 
 	/*
-	 * @Column(name = "release_year") Integer release_year;
+	 * @Column(name = "release_year") Date release_year;
 	 */
 
 	@Column(name = "language_id")
@@ -35,22 +37,23 @@ public class FilmDto {
 	@Column(name = "rental_duration")
 	Short rental_duration;
 
-	/*
-	 * @Column(name = "rental_rate") Integer rental_rate;
-	 */
+	@Column(name = "rental_rate")
+	BigDecimal rental_rate;
 
 	@Column(name = "length")
 	short length;
 
-	/*
-	 * @Column(name = "replacement_cost") String replacement_cost;
-	 */
+	@Column(name = "replacement_cost")
+	BigDecimal replacement_cost;
 
 	@Column(name = "rating")
 	String rating;
 
 	@Column(name = "last_update", nullable = false)
 	Timestamp lastUpdated;
+
+	@Column(name = "special_features")
+	String[] special_features;
 
 	public Integer getFilmId() {
 		return filmId;
@@ -84,14 +87,6 @@ public class FilmDto {
 		this.language_id = language_id;
 	}
 
-	public Short getRental_duration() {
-		return rental_duration;
-	}
-
-	public void setRental_duration(Short rental_duration) {
-		this.rental_duration = rental_duration;
-	}
-
 	public short getLength() {
 		return length;
 	}
@@ -116,14 +111,40 @@ public class FilmDto {
 		this.lastUpdated = lastUpdated;
 	}
 
-	/*
-	 * @Column(name = "special_features") String special_features;
-	 */
+	public Short getRental_duration() {
+		return rental_duration;
+	}
+
+	public void setRental_duration(Short rental_duration) {
+		this.rental_duration = rental_duration;
+	}
+
+	public BigDecimal getRental_rate() {
+		return rental_rate;
+	}
+
+	public void setRental_rate(BigDecimal rental_rate) {
+		this.rental_rate = rental_rate;
+	}
+
+	public BigDecimal getReplacement_cost() {
+		return replacement_cost;
+	}
+
+	public void setReplacement_cost(BigDecimal replacement_cost) {
+		this.replacement_cost = replacement_cost;
+	}
+
+	public String[] getSpecial_features() {
+		return special_features;
+	}
+
+	public void setSpecial_features(String[] special_features) {
+		this.special_features = special_features;
+	}
 
 	/*
 	 * @Column(name = "fulltext") String fulltext;
 	 */
 
-	
-	
 }
