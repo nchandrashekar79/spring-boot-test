@@ -10,16 +10,19 @@ import jakarta.persistence.Table;
 @Table(name = "category")
 @Entity
 public class CategoryDto {
-	
+
 	@Id
+
 	@Column(name = "category_id", nullable = false)
-	@GeneratedValue(generator="my_seq")
-	@SequenceGenerator(name="my_seq",sequenceName="actor_actor_id_seq", allocationSize=1)
+
+	@GeneratedValue(generator = "category_seq")
+
+	@SequenceGenerator(name = "category_seq", sequenceName = "category_category_id_seq", allocationSize = 1)
 	Integer categoryId;
-	
+
 	@Column(name = "name", nullable = false)
 	String name;
-	
+
 	@Column(name = "last_update", nullable = false)
 	String lastUpdated;
 
@@ -46,7 +49,5 @@ public class CategoryDto {
 	public void setLastUpdated(String lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-	
-	
 
 }

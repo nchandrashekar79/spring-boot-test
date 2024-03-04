@@ -13,8 +13,8 @@ public class ActorDto {
 
 	@Id
 	@Column(name = "actor_id", nullable = false)
-	@GeneratedValue(generator="my_seq")
-	@SequenceGenerator(name="my_seq",sequenceName="actor_actor_id_seq", allocationSize=1)
+	@GeneratedValue(generator="actor_seq")
+	@SequenceGenerator(name="actor_seq",sequenceName="actor_actor_id_seq", allocationSize=1)
 	Integer actorId;
 	
 	@Column(name = "first_name", nullable = false)
