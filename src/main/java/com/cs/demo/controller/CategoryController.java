@@ -15,7 +15,7 @@ import com.cs.demo.exception.ResourceNotFoundException;
 import com.cs.demo.repo.CategoryRepo;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("v1/category")
 public class CategoryController {
 	
 	private CategoryRepo categoryRepo;

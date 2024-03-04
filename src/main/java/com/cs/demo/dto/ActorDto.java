@@ -66,6 +66,8 @@ public class ActorDto {
 		this.lastUpdated = lastUpdated;
 	}
 	
-	
+	public ActorDto() {
+		
+	}
 
 }

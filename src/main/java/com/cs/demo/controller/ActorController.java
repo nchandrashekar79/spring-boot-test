@@ -21,7 +21,7 @@ import com.cs.demo.exception.ResourceNotFoundException;
 import com.cs.demo.service.ActorService;
 
 @RestController
-@RequestMapping("/actor")
+@RequestMapping("/v1/actor")
 public class ActorController {
 	ActorService actorService;
 
@@ -35,16 +35,15 @@ public class ActorController {
 		return "actor test ";
 	}
 
-	@GetMapping("/actors")
+	@GetMapping
 	public List<ActorDto> getActors() {
 		return actorService.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getActorsById(@PathVariable(value = "id") Integer id) throws ResourceNotFoundException {
+	public ResponseEntity<Actor> getActorsById(@PathVariable(value = "id") Integer id) throws ResourceNotFoundException {
 
-		ActorDto actorDto = actorService.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + id));
+		ActorDto actorDto = findById(id);
 
 		System.out.println(actorDto.getFirstName());
 		Actor ac = new Actor(actorDto.getActor_id(), actorDto.getFirstName(), actorDto.getLastName(),
@@ -62,8 +61,7 @@ public class ActorController {
 	public ResponseEntity<ActorDto> updateEmployee(@PathVariable(value = "id") Integer id,
 			@RequestBody ActorDto actorReq) throws ResourceNotFoundException {
 
-		ActorDto actor = actorService.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + id));
+		ActorDto actor = findById(id);
 
 		actor.setActor_id(actor.getActor_id());
 		actor.setFirstName(actorReq.getFirstName());
@@ -76,13 +74,17 @@ public class ActorController {
 
 	@DeleteMapping("{id}")
 	public Map<String, Boolean> deleteActor(@PathVariable(value = "id") Integer id) throws ResourceNotFoundException {
-		ActorDto employee = actorService.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + id));
+		ActorDto employee = findById(id);
 
 		actorService.delete(employee);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
+	}
+
+	private ActorDto findById(Integer id) throws ResourceNotFoundException {
+		return actorService.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Actor not found for this id :: " + id));
 	}
 
 }

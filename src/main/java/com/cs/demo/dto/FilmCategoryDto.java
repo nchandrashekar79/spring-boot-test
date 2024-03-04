@@ -1,25 +1,49 @@
 package com.cs.demo.dto;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-//@Table(name = "actor")
-//@Entity
+@Table(name = "film_category")
+@Entity
 public class FilmCategoryDto {
-	/*
-	 * 
-	 * @Id
-	 * 
-	 * @Column(name = "actor_id", nullable = false)
-	 * 
-	 * @GeneratedValue(generator = "my_seq")
-	 * 
-	 * @SequenceGenerator(name = "my_seq", sequenceName = "actor_actor_id_seq",
-	 * allocationSize = 1) Integer actorId;
-	 * 
-	 * @Column(name = "last_update", nullable = false) Timestamp lastUpdated;
-	 */}
+
+	@EmbeddedId
+    private FilmCateId bookId;
+
+	@Column(name = "last_update", nullable = false)
+	Timestamp lastUpdated;
+
+	public FilmCateId getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(FilmCateId bookId) {
+		this.bookId = bookId;
+	}
+
+	public Timestamp getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(Timestamp lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
+	public FilmCategoryDto(FilmCateId bookId, Timestamp lastUpdated) {
+		super();
+		this.bookId = bookId;
+		this.lastUpdated = lastUpdated;
+	}
+
+	public FilmCategoryDto() {
+	}
+	
+	
+	
+	
+	
+}

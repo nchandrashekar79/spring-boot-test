@@ -12,6 +12,8 @@ import com.cs.demo.dto.CategoryDto;
 import com.cs.demo.dto.CityDto;
 import com.cs.demo.dto.CountryDto;
 import com.cs.demo.dto.CustomerDto;
+import com.cs.demo.dto.FilmActorDto;
+import com.cs.demo.dto.FilmCategoryDto;
 import com.cs.demo.dto.FilmDto;
 import com.cs.demo.dto.InventoryDto;
 import com.cs.demo.dto.LanguageDto;
@@ -24,6 +26,8 @@ import com.cs.demo.repo.CategoryRepo;
 import com.cs.demo.repo.CityRepo;
 import com.cs.demo.repo.CountryRepo;
 import com.cs.demo.repo.CustomerRepo;
+import com.cs.demo.repo.FilmActorRepo;
+import com.cs.demo.repo.FilmCategoryRepo;
 import com.cs.demo.repo.FilmRepo;
 import com.cs.demo.repo.InventoryRepo;
 import com.cs.demo.repo.LanguageRepo;
@@ -33,7 +37,7 @@ import com.cs.demo.repo.StaffRepo;
 import com.cs.demo.repo.StoreRepo;
 
 @RestController
-@RequestMapping("test")
+@RequestMapping("v1/test")
 public class TestController {
 
 	@Autowired
@@ -72,6 +76,23 @@ public class TestController {
 	
 	@Autowired
 	private CategoryRepo categoryRepo;
+	
+	@Autowired
+	private FilmCategoryRepo filmCategoryRepo;
+	
+	
+	@Autowired
+	private FilmActorRepo filmActorRepo;
+	
+	@GetMapping("/filmactor")
+	public List<FilmActorDto> filmActorFindAll() {
+		return filmActorRepo.findAll();
+	}
+	
+	@GetMapping("/filmcat")
+	public List<FilmCategoryDto> filmCategoryFindAll() {
+		return filmCategoryRepo.findAll();
+	}
 	
 	@GetMapping("/cat")
 	public List<CategoryDto> categoryFindAll() {
