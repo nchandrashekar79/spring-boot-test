@@ -17,7 +17,7 @@ public class InventoryDto {
 	@Column(name = "inventory_id", nullable = false)
 	@GeneratedValue(generator = "inventory_seq")
 	@SequenceGenerator(name = "inventory_seq", sequenceName = "inventory_inventory_id_seq", allocationSize = 1)
-	Integer actorId;
+	Integer inventoryId;
 
 	@Column(name = "film_id")
 	short film_id;
@@ -28,12 +28,13 @@ public class InventoryDto {
 	@Column(name = "last_update", nullable = false)
 	Timestamp lastUpdated;
 
-	public Integer getActorId() {
-		return actorId;
+
+	public Integer getInventoryId() {
+		return inventoryId;
 	}
 
-	public void setActorId(Integer actorId) {
-		this.actorId = actorId;
+	public void setInventoryId(Integer inventoryId) {
+		this.inventoryId = inventoryId;
 	}
 
 	public short getFilm_id() {

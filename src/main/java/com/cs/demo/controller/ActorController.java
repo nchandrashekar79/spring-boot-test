@@ -30,11 +30,6 @@ public class ActorController {
 		this.actorService = repo;
 	}
 
-	@GetMapping("/test")
-	public String test() {
-		return "actor test ";
-	}
-
 	@GetMapping
 	public List<ActorDto> getActors() {
 		return actorService.findAll();
@@ -46,37 +41,42 @@ public class ActorController {
 		ActorDto actorDto = findById(id);
 
 		System.out.println(actorDto.getFirstName());
-		Actor ac = new Actor(actorDto.getActor_id(), actorDto.getFirstName(), actorDto.getLastName(),
+		Actor ac = new Actor(actorDto.getActorId(), actorDto.getFirstName(), actorDto.getLastName(),
 				actorDto.getLastUpdated());
 		return ResponseEntity.ok().body(ac);
 
 	}
 
 	@PostMapping
-	public ActorDto createEmployee(@RequestBody ActorDto actor) {
+	public ActorDto createActor(@RequestBody ActorDto actor) {
 		return actorService.save(actor);
 	}
 
 	@PutMapping("{id}")
-	public ResponseEntity<ActorDto> updateEmployee(@PathVariable(value = "id") Integer id,
+	public ResponseEntity<ActorDto> updateActor(@PathVariable(value = "id") Integer id,
 			@RequestBody ActorDto actorReq) throws ResourceNotFoundException {
 
-		ActorDto actor = findById(id);
-
-		actor.setActor_id(actor.getActor_id());
-		actor.setFirstName(actorReq.getFirstName());
-		actor.setLastName(actorReq.getLastName());
-		actor.setLastUpdated(actorReq.getLastUpdated());
+		ActorDto actor = mapActorData(id, actorReq);
 
 		ActorDto updatedActor = actorService.save(actor);
 		return ResponseEntity.ok(updatedActor);
 	}
 
+	private ActorDto mapActorData(Integer id, ActorDto actorReq) throws ResourceNotFoundException {
+		ActorDto actor = findById(id);
+
+		actor.setActorId(actor.getActorId());
+		actor.setFirstName(actorReq.getFirstName());
+		actor.setLastName(actorReq.getLastName());
+		actor.setLastUpdated(actorReq.getLastUpdated());
+		return actor;
+	}
+
 	@DeleteMapping("{id}")
 	public Map<String, Boolean> deleteActor(@PathVariable(value = "id") Integer id) throws ResourceNotFoundException {
-		ActorDto employee = findById(id);
+		ActorDto Actor = findById(id);
 
-		actorService.delete(employee);
+		actorService.delete(Actor);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;

@@ -13,25 +13,25 @@ public class ActorDto {
 
 	@Id
 	@Column(name = "actor_id", nullable = false)
-	@GeneratedValue(generator="actor_seq")
-	@SequenceGenerator(name="actor_seq",sequenceName="actor_actor_id_seq", allocationSize=1)
+	@GeneratedValue(generator = "actor_seq")
+	@SequenceGenerator(name = "actor_seq", sequenceName = "actor_actor_id_seq", allocationSize = 1)
 	Integer actorId;
-	
+
 	@Column(name = "first_name", nullable = false)
 	String firstName;
-	
+
 	@Column(name = "last_name", nullable = false)
 	String lastName;
-	
+
 	@Column(name = "last_update", nullable = false)
 	String lastUpdated;
 
-	public Integer getActor_id() {
+	public Integer getActorId() {
 		return actorId;
 	}
 
-	public void setActor_id(Integer actor_id) {
-		this.actorId = actor_id;
+	public void setActorId(Integer actorId) {
+		this.actorId = actorId;
 	}
 
 	public String getFirstName() {
@@ -65,9 +65,9 @@ public class ActorDto {
 		this.lastName = lastName;
 		this.lastUpdated = lastUpdated;
 	}
-	
+
 	public ActorDto() {
-		
+
 	}
 
 }
