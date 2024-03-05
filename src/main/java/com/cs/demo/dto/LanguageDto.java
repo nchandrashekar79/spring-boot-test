@@ -20,7 +20,7 @@ public class LanguageDto {
 	Integer languageId;
 
 	@Column(name = "name", nullable = false)
-	char name;
+	char[] name;
 
 	@Column(name = "last_update", nullable = false)
 	Timestamp lastUpdated;
@@ -33,11 +33,11 @@ public class LanguageDto {
 		this.languageId = languageId;
 	}
 
-	public char getName() {
+	public char[] getName() {
 		return name;
 	}
 
-	public void setName(char name) {
+	public void setName(char[] name) {
 		this.name = name;
 	}
 
@@ -48,5 +48,7 @@ public class LanguageDto {
 	public void setLastUpdated(Timestamp lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+	
+	
 
 }

@@ -1,13 +1,15 @@
 package com.cs.demo.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -31,8 +33,13 @@ public class FilmDto {
 	 * @Column(name = "release_year") Date release_year;
 	 */
 
-	@Column(name = "language_id")
-	short language_id;
+	/*
+	 * @Column(name = "language_id") short language_id;
+	 */
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "language_id", referencedColumnName = "language_id")
+	LanguageDto language;
 
 	@Column(name = "rental_duration")
 	Short rental_duration;
@@ -77,14 +84,6 @@ public class FilmDto {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public short getLanguage_id() {
-		return language_id;
-	}
-
-	public void setLanguage_id(short language_id) {
-		this.language_id = language_id;
 	}
 
 	public short getLength() {
@@ -142,6 +141,16 @@ public class FilmDto {
 	public void setSpecial_features(String[] special_features) {
 		this.special_features = special_features;
 	}
+
+	public LanguageDto getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(LanguageDto language) {
+		this.language = language;
+	}
+
+	
 
 	/*
 	 * @Column(name = "fulltext") String fulltext;
