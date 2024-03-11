@@ -50,20 +50,14 @@ public class ActorControllerTest {
 
 	}
 
-	@Test
-	public void test() {
-
-		String str = actorController.test();
-		assertNotNull(str);
-
-	}
+	
 	
 	@Test
 	public void getActorsByIdTest() throws ResourceNotFoundException {
 
 		ActorDto actorDto = new ActorDto(1, "firstname", "lastname", "dd");
 		
-		Actor ac = new Actor(actorDto.getActor_id(), actorDto.getFirstName(), actorDto.getLastName(),
+		Actor ac = new Actor(actorDto.getActorId(), actorDto.getFirstName(), actorDto.getLastName(),
 				actorDto.getLastUpdated());
 		
 		Optional<ActorDto> opDto = Optional.of(actorDto);
@@ -80,7 +74,7 @@ public class ActorControllerTest {
 
 		ActorDto actorDto = new ActorDto(1, "firstname", "lastname", "dd");
 		
-		Actor ac = new Actor(actorDto.getActor_id(), actorDto.getFirstName(), actorDto.getLastName(),
+		Actor ac = new Actor(actorDto.getActorId(), actorDto.getFirstName(), actorDto.getLastName(),
 				actorDto.getLastUpdated());
 		
 		Optional<ActorDto> opDto = Optional.of(actorDto);

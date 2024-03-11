@@ -2,7 +2,7 @@ package com.cs.demo.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.doNothing;
+import static org.mockito.BDDMockito.willDoNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.cs.demo.dto.ActorDto;
 import com.cs.demo.repo.ActorRepo;
@@ -27,6 +28,10 @@ public class ActorServiceTest {
 
 	@InjectMocks
 	ActorService actorService;
+	
+	@MockBean
+	private ActorService actorServiceBean;
+
 
 	@Mock
 	ActorRepo dao;
@@ -75,5 +80,7 @@ public class ActorServiceTest {
 		assertNotNull(act);
 
 	}
+	
+	
 
 }

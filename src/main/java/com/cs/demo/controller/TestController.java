@@ -2,6 +2,8 @@ package com.cs.demo.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,6 +86,8 @@ public class TestController {
 	@Autowired
 	private FilmActorRepo filmActorRepo;
 	
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	
 	@GetMapping("/filmactor")
 	public List<FilmActorDto> filmActorFindAll() {
 		return filmActorRepo.findAll();
@@ -158,6 +162,7 @@ public class TestController {
 
 	@GetMapping("/store")
 	public List<StoreDto> storeFindAll() {
+		 logger.debug("Performing an storeFindAll...");
 		return storeRepo.findAll();
 	}
 

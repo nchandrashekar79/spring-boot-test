@@ -24,6 +24,10 @@ import com.cs.demo.service.ActorService;
 @RequestMapping("/v1/actor")
 public class ActorController {
 	ActorService actorService;
+	
+	public ActorController(){
+		
+	}
 
 	@Autowired
 	public ActorController(ActorService repo) {
